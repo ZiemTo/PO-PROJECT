@@ -66,6 +66,7 @@ public class Login extends JDialog{
         });
     }
 private boolean getAutenticateUser(String login, String paasowrd) {
+    boolean x = false;
         try{
         Connection conn = Database.getCon();
         Statement stmt = conn.createStatement();
@@ -76,6 +77,7 @@ private boolean getAutenticateUser(String login, String paasowrd) {
 
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()){
+        x=true;
         User.user_id = User.getUser_id();
         User.login = resultSet.getString("login");
         User.email = resultSet.getString("email");
@@ -90,7 +92,7 @@ private boolean getAutenticateUser(String login, String paasowrd) {
         e.printStackTrace();
         }
 
-        return true;
+        return x;
 
         }
 

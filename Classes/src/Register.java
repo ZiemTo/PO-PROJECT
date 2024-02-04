@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,27 @@ public class Register extends JDialog {
         String email = emailField.getText();
         String password = String.valueOf(passwordField.getPassword());
         String password2 = String.valueOf(confirmPasswordField.getPassword());
+        try{
+        Connection con = Database.getCon();
+        Statement stmt = con.createStatement();
+        String sql = "SELECT * FROM Users WHERE login=?";
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setString(1,login);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()){
+            JOptionPane.showMessageDialog(this,
+                    "This username is unavailable",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        stmt.close();
+        con.close();
+    }
+        catch (Exception e){
+        e.printStackTrace();
+    }
         if(login.isEmpty() || email.isEmpty() || password.isEmpty() || password2.isEmpty())
         {
             JOptionPane.showMessageDialog(this,
@@ -62,8 +84,8 @@ public class Register extends JDialog {
         boolean x = addUserToDatabase(login, email, password);
         if (x) {
             dispose();
-            MainPanel panel = new MainPanel();
-            panel.setVisible(true);
+            Login login1 = new Login(null);
+            login1.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(this,
