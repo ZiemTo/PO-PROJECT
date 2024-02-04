@@ -247,7 +247,7 @@
                 <properties>
                   <font name="Ink Free" size="18"/>
                   <foreground color="-264477"/>
-                  <text value="Doesn't have an account? Register now!"/>
+                  <text value="Don't have an account? Register now!"/>
                 </properties>
               </component>
               <vspacer id="4c11d">
