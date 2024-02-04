@@ -10,7 +10,6 @@ public class Login extends JDialog{
     private JButton clearButton;
     private JButton registerButton;
     private JButton logInButton;
-    private JLabel errorLabel;
     private JPanel JPanelLogin;
 
     public static void main(String[] args) {
@@ -52,11 +51,10 @@ public class Login extends JDialog{
                 }
                 else {
                     JOptionPane.showMessageDialog(Login.this,
-                            "Email or password invalied",
+                            "Login or password invalied",
                             "Try again",
                             JOptionPane.ERROR_MESSAGE);
                 }
-
             }
         });
         clearButton.addActionListener(new ActionListener() {
@@ -67,9 +65,6 @@ public class Login extends JDialog{
             }
         });
     }
-
-
-
 private boolean getAutenticateUser(String login, String paasowrd) {
         try{
         Connection conn = Database.getCon();

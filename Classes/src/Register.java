@@ -8,7 +8,6 @@ public class Register extends JDialog {
     private JTextField loginField;
     private JButton clearButton;
     private JButton registerButton;
-    private JLabel errorLabel;
     private JTextField emailField;
     private JPasswordField passwordField;
     private JPanel JPanelRegister;

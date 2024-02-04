@@ -1,7 +1,13 @@
+import com.opencsv.CSVWriter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Note extends JFrame{
@@ -12,6 +18,7 @@ public class Note extends JFrame{
     private JButton deleteButton;
     private javax.swing.JTextArea JTextArea;
     private JButton updateButton;
+    private JButton exportToFileButton;
 
     public Note(String content) throws SQLException {
         nNote nnote = new nNote();
@@ -72,7 +79,29 @@ public class Note extends JFrame{
                 updateDatabase(content, nnote.notes_id);
             }
         });
+        exportToFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                nnote.content= JTextArea.getText();
+                try {
+                    nnote.user_id=User.getUser_id();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                String filePath = "file.csv";
+                try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
+                    String[] data = new String[]{nnote.content,String.valueOf(nnote.user_id)};
+                    writer.writeNext(data);
+                    System.out.println("Dane zostały zapisane do pliku CSV.");
+                } catch (IOException exe) {
+                    exe.printStackTrace();
+                }
+            }
+        });
     }
+
+
     private void updateDatabase(String content, int id)
     {
         try {
