@@ -1,9 +1,11 @@
+import javax.swing.*;
 import java.sql.*;
 
-public class nNote {
+public class nNote  extends MainPanel{
     public int notes_id;
     public String content;
     public int user_id;
+
     public int getNote_id() throws SQLException {
         User.getUser_id();
         Connection conn = Database.getCon();

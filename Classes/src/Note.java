@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Note extends JFrame{
+public class Note extends MainPanel{
     private JButton button1;
     private JButton saveButton;
     private JPanel NotePanel;
@@ -21,7 +21,9 @@ public class Note extends JFrame{
     private JButton exportToFileButton;
 
     public Note(String content) throws SQLException {
+
         nNote nnote = new nNote();
+        setTitle("Note");
         this.setContentPane(this.NotePanel);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         if(!Objects.equals(content, ""))

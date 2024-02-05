@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class Login extends JDialog{
+public class Login extends Register{
     private JPasswordField passwordField;
     private JTextField loginField;
     private JButton clearButton;

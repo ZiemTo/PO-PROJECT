@@ -2,6 +2,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +12,7 @@ import java.sql.*;
 import java.util.List;
 
 
-public class MainPanel extends JFrame{
+public class MainPanel extends Database {
     private JButton logOutButton;
     private JButton noteButton;
     private JButton showAllButton;
@@ -20,7 +21,7 @@ public class MainPanel extends JFrame{
 
     public MainPanel()
     {
-        super("DashboardForm");
+        setTitle("Main panel");
         setContentPane(MainPanel);
         int width = 800, height = 600;
         setMinimumSize(new Dimension(width,height));

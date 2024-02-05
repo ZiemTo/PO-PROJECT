@@ -1,6 +1,7 @@
+import javax.swing.*;
 import java.sql.*;
 
-public class User {
+public class User extends MainPanel{
     public static int user_id;
     public static String login;
    public  static String email;

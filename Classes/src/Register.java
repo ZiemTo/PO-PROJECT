@@ -1,10 +1,9 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-public class Register extends JDialog {
+public class Register extends MainPanel  {
     private JPasswordField confirmPasswordField;
     private JTextField loginField;
     private JButton clearButton;
@@ -15,7 +14,7 @@ public class Register extends JDialog {
 
     public Register(JFrame parent)
     {
-        super(parent);
+        setTitle("MyNotes-Register");
         setContentPane(JPanelRegister);
         setMinimumSize(new Dimension(500,800));
         setModal(true);
